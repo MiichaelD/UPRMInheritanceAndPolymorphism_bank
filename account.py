@@ -25,6 +25,7 @@ class Account:
 
   # Deposit the given amount to the account balance.
   def deposit(self, amount):
+    print(tc.OKGREEN, self.get_name(), 'received a $',amount,'deposit', tc.ENDC)
     self.__balance += amount
 
   # Withdraws cash from account if amount is below the balance, account is not 
@@ -34,7 +35,8 @@ class Account:
       print(tc.FAIL, self.get_name(), 'is disabled for withdrawals', tc.ENDC)
 
     if amount < self.get_available_balance():
-      self.__balance - amount;
+      self.__balance - amount
+      print(tc.OKGREEN, 'Withdrew $',amount,'from', self.get_name(), tc.ENDC)
       return True
 
     print(tc.FAIL, self.get_name(), ': Not enough balance to withdraw', tc.ENDC)
@@ -57,7 +59,8 @@ class Account:
       return False
 
     if amount <= self.get_available_balance():
-      self.__balance -= amount;
+      self.__balance -= amount
+      print(tc.OKGREEN, 'Paid $',amount,'from', self.get_name(), tc.ENDC)
       return True
     print(tc.FAIL, self.get_name(), ': Not enough balance for payment', tc.ENDC)
     return False

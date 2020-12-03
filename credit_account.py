@@ -1,5 +1,6 @@
 
 from account import Account
+from terminal_colors import TerminalColors as tc
 
 
 # Account used to pay but not to withdraw
@@ -19,3 +20,7 @@ class CreditAccount(Account):
       return False
     Account.deposit(self, amount)
     return True
+
+  def transfer_to(self, account, amount):
+    print(tc.FAIL, self.get_name(), ': Account not enabled for transfers', tc.ENDC); 
+    return False

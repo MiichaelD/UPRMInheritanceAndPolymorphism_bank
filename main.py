@@ -19,22 +19,22 @@ def main():
       print('Made payment with Credit card. Item worth $', phone_price, '\n')
   print_statement(all_accounts, 'New balances after paying for phone')
 
-  # # A month later
-  # _fast_forward_a_month(checking, savings, credit)
-  # print_statement(all_accounts)
+  # A month later
+  _fast_forward_a_month(checking, savings, credit)
+  print_statement(all_accounts)
   
   # # Paying credit card
-  # checking.transfer_to(credit, 300)
-  # savings.transfer_to(credit, 25)
-  # print_statement(all_accounts,'Pay credit card from checking and savings accounts')
+  checking.transfer_to(credit, 300)
+  savings.transfer_to(credit, 25)
+  print_statement(all_accounts,'Pay credit card from checking and savings accounts')
 
 
 def _fast_forward_a_month(checking, savings, credit):
-  print(tc.HEADER, 'A month later: Employer deposited payment, savings generated interests and paid phone bill', tc.ENDC)
+  print(tc.HEADER, 'A month later: Employer deposited, savings generated interests and paid phone bill', tc.ENDC)
   phone_bill = 40
-  credit.pay(phone_bill)
   checking.deposit(1000)
   savings.accrue_interest()
+  credit.pay(phone_bill)
 
 def print_account_info(account):
   print(account.get_name())
